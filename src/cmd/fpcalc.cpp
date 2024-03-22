@@ -15,6 +15,7 @@
 extern void jni_output(const char* format, ...);
 #define fprintf(unused,...) jni_output(__VA_ARGS__)
 #define printf(...)         jni_output(__VA_ARGS__)
+#define exit(value)         return;
 
 using namespace chromaprint;
 
