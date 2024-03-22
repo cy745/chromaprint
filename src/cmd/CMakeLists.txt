@@ -28,16 +28,17 @@ if(WIN32)
 	set(fpcalc_LIBS ${fpcalc_LIBS} bcrypt)
 endif()
 
-add_library(fpcalc_libs INTERFACE)
-target_link_libraries(fpcalc_libs INTERFACE ${fpcalc_LIBS})
+add_library(fpcalc_libs STATIC fpcalc.cpp)
+target_link_libraries(fpcalc_libs PUBLIC ${fpcalc_LIBS})
+target_link_directories(fpcalc_libs PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
 
-add_executable(fpcalc fpcalc.cpp)
-target_link_libraries(fpcalc PRIVATE fpcalc_libs)
-if(fpcalc_LINK_FLAGS)
-	set_target_properties(fpcalc PROPERTIES LINK_FLAGS ${fpcalc_LINK_FLAGS})
-endif()
+#add_executable(fpcalc fpcalc.cpp)
+#target_link_libraries(fpcalc PRIVATE fpcalc_libs)
+#if(fpcalc_LINK_FLAGS)
+#	set_target_properties(fpcalc PROPERTIES LINK_FLAGS ${fpcalc_LINK_FLAGS})
+#endif()
 
-install(
-    TARGETS fpcalc
-    RUNTIME DESTINATION ${BIN_INSTALL_DIR}
-    COMPONENT fpcalc)
+#install(
+#    TARGETS fpcalc
+#    RUNTIME DESTINATION ${BIN_INSTALL_DIR}
+#    COMPONENT fpcalc)

@@ -6,10 +6,15 @@
 #include <chromaprint.h>
 #include "audio/ffmpeg_audio_reader.h"
 #include "utils/scope_exit.h"
+#include "fpcalc.h"
 
 #ifdef _WIN32
 #include <windows.h>
 #endif
+
+extern void jni_output(const char* format, ...);
+#define fprintf(unused,...) jni_output(__VA_ARGS__)
+#define printf(...)         jni_output(__VA_ARGS__)
 
 using namespace chromaprint;
 
