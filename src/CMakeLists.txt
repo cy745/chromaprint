@@ -73,7 +73,7 @@ if(BUILD_SHARED_LIBS)
 	set_target_properties(chromaprint_objs PROPERTIES POSITION_INDEPENDENT_CODE TRUE)
 endif()
 
-add_library(chromaprint ${chromaprint_PUBLIC_SOURCES} ${chromaprint_PUBLIC_HEADERS} $<TARGET_OBJECTS:chromaprint_objs>)
+add_library(chromaprint STATIC ${chromaprint_PUBLIC_SOURCES} ${chromaprint_PUBLIC_HEADERS} $<TARGET_OBJECTS:chromaprint_objs>)
 set_target_properties(chromaprint PROPERTIES
 	DEFINE_SYMBOL CHROMAPRINT_API_EXPORTS
 	PUBLIC_HEADER ${chromaprint_PUBLIC_HEADERS}
